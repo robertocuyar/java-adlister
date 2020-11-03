@@ -26,7 +26,7 @@
 </form>
 
 <h1>The username is <%=request.getParameter("username")%> and the password is <%=request.getParameter("password")%></h1>
-<c:if test = '${param.username.equalsIgnoreCase("Admin") && param.password.equalsIgnoreCase("password") }'>
+<c:if test = '${param.username.equals("Admin") && param.password.equals("password") }'>
     <c:redirect url="/profile.jsp" />
 </c:if>
 
