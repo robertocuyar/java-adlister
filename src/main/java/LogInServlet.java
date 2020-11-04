@@ -17,8 +17,11 @@ public class LogInServlet extends HttpServlet {
                 request.getRequestDispatcher("/profile.jsp").forward(request, response);
                 return;
             }
+
         }
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        //request.getRequestDispatcher("/login.jsp").forward(request, response);
+        response.sendRedirect("/login.jsp");
+
     }
 }
 
