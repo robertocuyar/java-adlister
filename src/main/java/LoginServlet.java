@@ -12,13 +12,12 @@ public class LoginServlet extends HttpServlet {
         try {
             String validUser = (String) request.getSession().getAttribute("username");
             if (validUser.equals("admin")) {
-                request.getRequestDispatcher("/profile").forward(request, response);
+          response.sendRedirect("/profile");
             }
         } catch (NullPointerException e) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");

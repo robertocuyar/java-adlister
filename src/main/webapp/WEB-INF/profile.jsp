@@ -9,7 +9,8 @@
     <jsp:include page="../partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Viewing your profile.</h1>
+        <h1>Welcome ${username}!</h1>
+        <p>This is your profile.</p>
     </div>
     <div class="container">
         <a href="/logout">Log Out</a>

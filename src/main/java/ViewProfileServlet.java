@@ -3,7 +3,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "ViewProfileServlet", urlPatterns = "/profile")
@@ -12,11 +11,12 @@ public class ViewProfileServlet extends HttpServlet {
         try {
             String reference = (String) request.getSession().getAttribute("username");
             if(reference.equals("admin")) {
+                request.setAttribute("username", reference);
                 request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
                 return;
             }
         } catch (NullPointerException e){
-            request.getRequestDispatcher("/login").forward(request, response);
+            response.sendRedirect("/login");
             }
 
 }}
