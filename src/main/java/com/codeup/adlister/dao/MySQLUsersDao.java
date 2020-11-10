@@ -2,6 +2,8 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
+import com.codeup.adlister.Config;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 
@@ -41,7 +43,7 @@ public class MySQLUsersDao implements Users {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getPassword());
+            stmt.setString(3, BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
